@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: spitter
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: spitter
+    spec:
+      containers:
+      - name: spitter
+        image: darkofabijan/spitter:latest
+        ports:
+        - containerPort: 4567
