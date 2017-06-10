@@ -1,0 +1,12 @@
+
+task :docker_build do
+  system "docker build -t darkofabijan/spitter ."
+end
+
+task :docker_run do
+  system 'docker run -e "test_env_var=what!" -d -p 4567:4567 darkofabijan/spitter'
+end
+
+task :docker_push do
+  system "docker push darkofabijan/spitter:latest"
+end
