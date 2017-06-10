@@ -4,7 +4,8 @@ require 'net/http'
 set :bind, "0.0.0.0"
 
 get "/" do
-  output = Net::HTTP.get('spitter.default')
+  uri = URI("http://spitter.default:4567")
+  output = Net::HTTP.get(uri)
 
   "I found: #{output}"
 end
