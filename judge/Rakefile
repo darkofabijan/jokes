@@ -1,0 +1,18 @@
+
+task :docker_build do
+  system "docker build -t darkofabijan/judge ."
+end
+
+task :docker_run do
+  system 'docker run -e "test_env_var=what!" -d -p 4567:4567 darkofabijan/judge'
+end
+
+task :docker_push do
+  system "docker push darkofabijan/judge:latest"
+end
+
+task :deploy do
+  system "kubectl apply -f deploy.yml --record"
+  sleep 3
+  system "kubectl rollout status deployment judge"
+end
