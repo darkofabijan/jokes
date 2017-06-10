@@ -16,7 +16,12 @@ spec:
         - containerPort: 4567
         env:
           - name: test_env_var
-            value: "hello from k8s"
+            value: "hello from k8s..."
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: spitter-secrets
+                key: db_pass
 ---
 apiVersion: v1
 kind: Service
