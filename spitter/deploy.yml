@@ -14,6 +14,9 @@ spec:
         image: darkofabijan/spitter:latest
         ports:
         - containerPort: 4567
+        env:
+          - name: test_env_var
+            value: "hello from k8s"
 ---
 apiVersion: v1
 kind: Service

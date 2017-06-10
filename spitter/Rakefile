@@ -10,3 +10,9 @@ end
 task :docker_push do
   system "docker push darkofabijan/spitter:latest"
 end
+
+task :deploy do
+  system "kubectl apply -f deploy.yml --record"
+  sleep 3
+  system "kubectl rollout status deployment spitter"
+end
