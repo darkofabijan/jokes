@@ -1,0 +1,6 @@
+version: '3.2'
+services:
+  ex_addy:
+    image: renderedtext/ex_addy:<%= image_tag %>
+    ports:
+    - "4000:4000"
