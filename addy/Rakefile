@@ -1,0 +1,28 @@
+SERVICE = "ventilator"
+REMOTE = ["darkofabijan", SERVICE].join("/")
+
+desc "Builds Docker image"
+task :build do
+  system "docker build -t #{REMOTE}:v3 ."
+end
+
+desc "Runs Docker container"
+task :run do
+  system "docker run -d -p 4567:4567 #{REMOTE}:v3"
+end
+
+desc "Pushes Docker image"
+task :push do
+  system "docker push #{REMOTE}:v3"
+end
+
+desc "Deploys service and follows rollout"
+task :deploy do
+  system "kubectl apply -f deploy.yml --record"
+  sleep 1
+  system "kubectl rollout status deployment #{SERVICE}"
+end
+
+task :protos do
+  system "bundle exec grpc_tools_ruby_protoc -I . --ruby_out=. --grpc_out=. addy.proto"
+end
