@@ -1,0 +1,54 @@
+2017-07-20 23:41:17 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.Logger.Supervisor'}
+     Context:    child_terminated
+     Reason:     normal
+     Offender:   [{pid,<0.173.0>},{id,'Elixir.Logger.ErrorHandler'},{mfargs,{'Elixir.Logger.Watcher',watcher,[error_logger,'Elixir.Logger.ErrorHandler',{true,false,500}]}},{restart_type,permanent},{shutdown,5000},{child_type,worker}]
+
+2017-07-20 23:41:17 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.222.0>
+    registered_name: []
+    exception exit: {{bad_return,{{'Elixir.ExAddy.Application',start,[normal,[]]},{'EXIT',{undef,[{'Elixir.Plug.Adapters.Cowboy',child_spec,[http,'Elixir.ExAddy.Router',[],[{port,4000}]],[]},{'Elixir.ExAddy.Application',start,2,[{file,"lib/ex_addy/application.ex"},{line,15}]},{application_master,start_it_old,4,[{file,"application_master.erl"},{line,273}]}]}}}},[{application_master,init,4,[{file,"application_master.erl"},{line,134}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,247}]}]}
+    ancestors: [<0.221.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.223.0>,normal}]
+    links: [<0.221.0>,<0.33.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 190
+  neighbours:
+2017-07-20 23:42:52 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.Logger.Supervisor'}
+     Context:    child_terminated
+     Reason:     normal
+     Offender:   [{pid,<0.181.0>},{id,'Elixir.Logger.ErrorHandler'},{mfargs,{'Elixir.Logger.Watcher',watcher,[error_logger,'Elixir.Logger.ErrorHandler',{true,false,500}]}},{restart_type,permanent},{shutdown,5000},{child_type,worker}]
+
+2017-07-20 23:43:27 =ERROR REPORT====
+Failed to start Ranch listener 'Elixir.Addy.Adder.Server' in ranch_tcp:listen([{port,50051}]) for reason eaddrinuse (address already in use)
+2017-07-20 23:43:27 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.238.0>
+    registered_name: []
+    exception exit: {{listen_error,'Elixir.Addy.Adder.Server',eaddrinuse},[{ranch_acceptors_sup,listen_error,4,[{file,"/Users/darko/work/jokes/ex_addy/deps/ranch/src/ranch_acceptors_sup.erl"},{line,56}]},{ranch_acceptors_sup,init,1,[{file,"/Users/darko/work/jokes/ex_addy/deps/ranch/src/ranch_acceptors_sup.erl"},{line,37}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,294}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,365}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,333}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,247}]}]}
+    ancestors: [<0.236.0>,ranch_sup,<0.220.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.236.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 1247
+  neighbours:
+2017-07-20 23:43:27 =SUPERVISOR REPORT====
+     Supervisor: {<0.236.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,'Elixir.Addy.Adder.Server',eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,['Elixir.Addy.Adder.Server',100,ranch_tcp,[{connection_type,supervisor},{port,50051}]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+

@@ -4,8 +4,10 @@ require_relative './addy_services_pb'
 class AdderServer < Addy::Adder::Service
 
   def add(numbers_to_add, _unused_call)
+    p "Got request"
     c = numbers_to_add.a + numbers_to_add.b
 
+    p "Result is ready"
     Addy::Sum.new(:result => c)
   end
 
